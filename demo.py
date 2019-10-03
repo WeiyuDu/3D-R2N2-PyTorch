@@ -65,7 +65,7 @@ def main():
     NetClass = load_model('ResidualGRUNet')
 
     # Define a network and a solver. Solver provides a wrapper for the test function.
-    net = NetClass(compute_grad=False)  # instantiate a network
+    net = Net(compute_grad=False)  # instantiate a network
 
     net.load(DEFAULT_WEIGHTS)                        # load downloaded weights
     solver = Solver(net)                # instantiate a solver
