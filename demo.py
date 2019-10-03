@@ -35,6 +35,7 @@ def download_model(fn):
 
 
 from lib.data_augmentation import preprocess_img
+import matplotlib
 import matplotlib.pyplot as plt
 matplotlib.use('Agg')
 def load_demo_images():
