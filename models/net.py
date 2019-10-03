@@ -11,13 +11,13 @@ import torch.nn as nn
 
 class Net(nn.Module):
 
-    def __init__(self, random_seed=dt.datetime.now().microsecond, compute_grad=True):
+    def __init__(self, compute_grad=True, random_seed=dt.datetime.now().microsecond):
         print("\ninitializing \"Net\"")
         super(Net, self).__init__()
         self.rng = np.random.RandomState(random_seed)
 
         self.batch_size = cfg.CONST.BATCH_SIZE
-        
+
         self.img_w = cfg.CONST.IMG_W
         self.img_h = cfg.CONST.IMG_H
         self.n_vox = cfg.CONST.N_VOX
@@ -30,19 +30,19 @@ class Net(nn.Module):
         #initialize all the parameters of the gru net
         if hasattr(self, "encoder") and hasattr(self, "decoder"):
             for m in self.modules():
-                
+
                 if isinstance(m, (nn.Conv2d, nn.Conv3d)):
                     """
-                    For Conv2d, the shape of the weight is 
+                    For Conv2d, the shape of the weight is
                     (out_channels, in_channels, kernel_size[0], kernel_size[1]).
-                    For Conv3d, the shape of the weight is 
+                    For Conv3d, the shape of the weight is
                     (out_channels, in_channels, kernel_size[0], kernel_size[1], kernel_size[2]).
                     """
                     w_shape = (m.out_channels, m.in_channels, *m.kernel_size)
                     m.weight.data = weight_init(w_shape)
                     if m.bias is not None:
                         m.bias.data.fill_(0.1)
-                        
+
                 elif isinstance(m, nn.Linear):
                     """
                     For Linear module, the shape of the weight is (out_features, in_features)
@@ -53,6 +53,6 @@ class Net(nn.Module):
                         m.bias.data.fill_(0.1)
         else:
             raise Exception("The network must have an encoder and a decoder before initializing all the parameters")
-                
+
     def forward(self, x, y=None):
         raise NotImplementedError("Define a forward pass")
