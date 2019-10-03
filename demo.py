@@ -42,8 +42,9 @@ def load_demo_images():
         im = preprocess_img(Image.open('imgs/%d.jpg' % i).resize((127,127)), train=False)
         ims.append([np.array(im).transpose(
             (2, 0, 1)).astype(np.float32)])
+        plt.figure()
         plt.imshow(im)
-        plt.show()
+        plt.savefig('res_imgs/%d.jpg' % i)
     return np.array(ims)
 
 
@@ -68,7 +69,7 @@ def main():
 
     # Run the network
     voxel_prediction, _ = solver.test_output(demo_imgs)
-    
+
     # Save the prediction to an OBJ file (mesh file).
     voxel2obj(pred_file_name, voxel_prediction[0, :, 1, :, :] > cfg.TEST.VOXEL_THRESH)
 
@@ -85,6 +86,5 @@ def main():
 if __name__ == '__main__':
     # Set the batch size to 1
     cfg_from_list(['CONST.BATCH_SIZE', 1])
-    
+
     main()
-    
