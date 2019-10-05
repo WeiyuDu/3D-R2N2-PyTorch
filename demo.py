@@ -68,8 +68,8 @@ def main():
     #net = NetClass(compute_grad=False)  # instantiate a network
     #net = NetClass()
 
-    NetClass.load(DEFAULT_WEIGHTS)                        # load downloaded weights
-    solver = Solver(NetClass)                # instantiate a solver
+    net = torch.load(DEFAULT_WEIGHTS)                        # load downloaded weights
+    solver = Solver(net)                # instantiate a solver
 
     # Run the network
     voxel_prediction, _ = solver.test_output(demo_imgs)
