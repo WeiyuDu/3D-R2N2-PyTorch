@@ -64,7 +64,7 @@ def main():
 
     # Use the default network model
     #NetClass = load_model('ResidualGRUNet')
-    net = ResidualGRUNet(compute_grad=False)
+    net = ResidualGRUNet()
     # Define a network and a solver. Solver provides a wrapper for the test function.
     #net = NetClass(compute_grad=False)  # instantiate a network
     #net = NetClass()
