@@ -62,13 +62,14 @@ def main():
     download_model(DEFAULT_WEIGHTS)
 
     # Use the default network model
-    NetClass = load_model('ResidualGRUNet')
-
+    #NetClass = load_model('ResidualGRUNet')
+    net = ResidualGRUNet(compute_grad=False)
     # Define a network and a solver. Solver provides a wrapper for the test function.
     #net = NetClass(compute_grad=False)  # instantiate a network
     #net = NetClass()
 
-    net = torch.load("output/ResidualGRUNet/default_model/weights.npy", allow_pickle=True)                        # load downloaded weights
+    #net = torch.load("output/ResidualGRUNet/default_model/weights.npy", allow_pickle=True)                        # load downloaded weights
+    net.load(DEFAULT_WEIGHTS)
     solver = Solver(net)                # instantiate a solver
 
     # Run the network
