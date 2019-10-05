@@ -18,8 +18,8 @@ from models import load_model
 from lib.config import cfg, cfg_from_list
 from lib.solver import Solver
 from lib.voxel import voxel2obj
-import torch
-DEFAULT_WEIGHTS = 'output/ResidualGRUNet/default_model/weights.npy'
+
+DEFAULT_WEIGHTS = "output/ResidualGRUNet/default_model/weights.npy"
 
 
 def cmd_exists(cmd):
