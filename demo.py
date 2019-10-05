@@ -37,16 +37,16 @@ def download_model(fn):
 from lib.data_augmentation import preprocess_img
 import matplotlib
 import matplotlib.pyplot as plt
-matplotlib.use('Agg')
+#matplotlib.use('Agg')
 def load_demo_images():
     ims = []
     for i in range(3):
         im = preprocess_img(Image.open('imgs/%d.jpg' % i).resize((127,127)), train=False)
         ims.append([np.array(im).transpose(
             (2, 0, 1)).astype(np.float32)])
-        plt.figure()
-        plt.imshow(im)
-        plt.savefig('res_imgs/%d.jpg' % i)
+        #plt.figure()
+        #plt.imshow(im)
+        #plt.savefig('res_imgs/%d.jpg' % i)
     return np.array(ims)
 
 
@@ -65,7 +65,8 @@ def main():
     NetClass = load_model('ResidualGRUNet')
 
     # Define a network and a solver. Solver provides a wrapper for the test function.
-    net = NetClass(compute_grad=False)  # instantiate a network
+    #net = NetClass(compute_grad=False)  # instantiate a network
+    net = NetClass()
 
     net.load(DEFAULT_WEIGHTS)                        # load downloaded weights
     solver = Solver(net)                # instantiate a solver
