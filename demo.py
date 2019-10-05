@@ -68,7 +68,7 @@ def main():
     #net = NetClass(compute_grad=False)  # instantiate a network
     #net = NetClass()
 
-    net = torch.load(DEFAULT_WEIGHTS)                        # load downloaded weights
+    net = torch.load("output/ResidualGRUNet/default_model/weights.npy")                        # load downloaded weights
     solver = Solver(net)                # instantiate a solver
 
     # Run the network
