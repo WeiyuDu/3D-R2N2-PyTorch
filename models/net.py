@@ -11,7 +11,7 @@ import torch.nn as nn
 
 class Net(nn.Module):
 
-    def __init__(self, compute_grad=True, random_seed=dt.datetime.now().microsecond):
+    def __init__(self, compute_grad=False, random_seed=dt.datetime.now().microsecond):
         print("\ninitializing \"Net\"")
         super(Net, self).__init__()
         self.rng = np.random.RandomState(random_seed)
