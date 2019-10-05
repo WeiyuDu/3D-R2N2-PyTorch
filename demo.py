@@ -19,6 +19,7 @@ from lib.config import cfg, cfg_from_list
 from lib.solver import Solver
 from lib.voxel import voxel2obj
 import torch
+from res_gru_net import ResidualGRUNet
 DEFAULT_WEIGHTS = "output/ResidualGRUNet/default_model/weights.npy"
 
 
