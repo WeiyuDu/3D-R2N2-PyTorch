@@ -70,9 +70,9 @@ def main():
     #net = NetClass()
 
     #net = torch.load("output/ResidualGRUNet/default_model/weights.npy", allow_pickle=True)                        # load downloaded weights
-    net.load(DEFAULT_WEIGHTS)
+    #net.load(DEFAULT_WEIGHTS)
     solver = Solver(net)                # instantiate a solver
-
+    solver.load(DEFAULT_WEIGHTS)
     # Run the network
     voxel_prediction, _ = solver.test_output(demo_imgs)
 
